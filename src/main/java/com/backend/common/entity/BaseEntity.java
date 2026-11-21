@@ -7,6 +7,7 @@ import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
@@ -29,7 +30,7 @@ public abstract class BaseEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
-    @LastModifiedBy
+    @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
@@ -38,7 +39,7 @@ public abstract class BaseEntity {
     private String createdBy;
 
     @LastModifiedBy
-    @Column
+    @Column(name = "updated_by", length = 100)
     private String updatedBy;
 
     @Override

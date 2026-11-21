@@ -1,4 +1,4 @@
-package com.backend.legder.service;
+package com.backend.ledger.service;
 
 public interface LedgerService {
 }

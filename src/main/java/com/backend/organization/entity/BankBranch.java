@@ -1,4 +1,4 @@
-package com.backend.branch.entity;
+package com.backend.organization.entity;
 
 import com.backend.common.entity.AuditableEntity;
 import jakarta.persistence.*;
@@ -42,7 +42,7 @@ public class BankBranch extends AuditableEntity {
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
-        if(!(o instanceof BankBranch that)) return false;
+        if(!(o instanceof com.backend.organization.entity.BankBranch that)) return false;
         return branchId != null && Objects.equals(branchId, that.branchId);
     }
 
@@ -53,3 +53,4 @@ public class BankBranch extends AuditableEntity {
 
 
 }
+
