@@ -1,4 +1,4 @@
 package com.backend.organization.enums;
 
-public enum BankBranch {
+public enum BranchStatus {
 }
