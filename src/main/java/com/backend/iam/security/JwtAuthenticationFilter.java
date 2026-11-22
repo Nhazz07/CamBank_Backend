@@ -78,8 +78,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
         }catch(ExpiredJwtException e){
+            response.setHeader(AUTH_ERROR_HEADER, TOKEN_EXPIRED);
+            logger.warn("Expired JWT rejected for {} {}", request.getMethod(), request.getServletPath());
+            SecurityContextHolder.clearContext();
 
+        }catch(Exception e){
+            logger.warn("JWT rejected for {} {} ({})", request.getMethod(), request.getServletPath());
+            SecurityContextHolder.clearContext();
         }
-
+        filterChain.doFilter(request,response);
     }
 }

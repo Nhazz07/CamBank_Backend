@@ -2,17 +2,15 @@ package com.backend.iam.security;
 
 import com.backend.iam.entity.User;
 import lombok.Getter;
-import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
+
 
 @Getter
-public class CustomerUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails {
 
     private final Long userId;
     private final String email;
@@ -20,7 +18,7 @@ public class CustomerUserDetails implements UserDetails {
     private final boolean active;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public CustomerUserDetails(User user) {
+    public CustomUserDetails(User user) {
         this.userId = user.getUserId();
         this.email = user.getEmail();
         this.passwordHash = user.getPasswordHash();
@@ -31,17 +29,17 @@ public class CustomerUserDetails implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
-
-    @Override
-    public @Nullable String getPassword() {
-        return "";
-    }
-
-    @Override
     public String getUsername() {
-        return "";
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return active;
     }
 }

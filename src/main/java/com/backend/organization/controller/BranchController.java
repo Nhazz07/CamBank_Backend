@@ -36,7 +36,6 @@ public class BranchController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse<List<BranchResponse>>> getAllBranch(){
         List<BranchResponse> branchResponses = branchService.getAllBranch();
 
@@ -50,7 +49,6 @@ public class BranchController {
     }
 
     @GetMapping("/{branchId}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse<BranchResponse>> getBranchById(@PathVariable @Positive Long branchId){
         BranchResponse branchResponse = branchService.getBranchById(branchId);
 
