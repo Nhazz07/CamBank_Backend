@@ -83,7 +83,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.clearContext();
 
         }catch(Exception e){
-            logger.warn("JWT rejected for {} {} ({})", request.getMethod(), request.getServletPath());
+            logger.warn("JWT rejected for {} {} ({})", request.getMethod(), request.getServletPath(), e.getMessage());
             SecurityContextHolder.clearContext();
         }
         filterChain.doFilter(request,response);
